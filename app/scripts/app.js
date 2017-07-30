@@ -5,6 +5,12 @@
                 enabled: true,
                 requireBase: false
             });
+
+        $stateProvider
+            .state('landing', {
+                url: '/',
+                templateUrl: '/templates/landing.html'
+            });
     }
 
     angular
