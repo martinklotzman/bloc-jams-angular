@@ -9,6 +9,7 @@
             if (currentSong !== song) {
                 if (currentBuzzObject) {
                     currentBuzzObject.stop();
+                    currentSong.playing = null;
                 }
 
             currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -22,6 +23,7 @@
           } else if (currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
                     currentBuzzObject.play();
+                    song.playing = true;
                 }
           }
         };
