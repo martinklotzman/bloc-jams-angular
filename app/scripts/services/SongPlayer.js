@@ -2,14 +2,24 @@
     function SongPlayer() {
         var SongPlayer = {};
 
-        SongPlayer.play = function(song) {
+        var currentSong = null;
+        var currentBuzzObject = null;
 
-            var currentBuzzObject = new buzz.sound(song.audioUrl, {
+        SongPlayer.play = function(song) {
+            if (currentSong !== song) {
+                if (currentBuzzObject) {
+                    currentBuzzObject.stop();
+                }
+
+            currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
                 preload: true
             });
 
+            currentSong = song;
+
             currentBuzzObject.play();
+          }
         };
 
         return SongPlayer;
