@@ -1,34 +1,37 @@
 (function() {
     function SongPlayer() {
-        var SongPlayer = {};
+         var SongPlayer = {};
 
-        var currentSong = null;
-        var currentBuzzObject = null;
+         var currentSong = null;
+         var currentBuzzObject = null;
 
-        SongPlayer.play = function(song) {
+         SongPlayer.play = function(song) {
+            console.log("play");
             if (currentSong !== song) {
                 if (currentBuzzObject) {
                     currentBuzzObject.stop();
                     currentSong.playing = null;
                 }
 
-            currentBuzzObject = new buzz.sound(song.audioUrl, {
-                formats: ['mp3'],
-                preload: true
-            });
+                currentBuzzObject = new buzz.sound(song.audioUrl, {
+                    formats: ['mp3'],
+                    preload: true
+                });
 
-            currentSong = song;
+                currentSong = song;
 
-            currentBuzzObject.play();
-          } else if (currentSong === song) {
-                if (currentBuzzObject.isPaused()) {
-                    currentBuzzObject.play();
-                    song.playing = true;
-                }
-            }
-        };
+                currentBuzzObject.play();
+                song.playing = true;
 
-        return SongPlayer;
+              } else if (currentSong === song) {
+                console.log("pause");
+                  if (currentBuzzObject.isPaused()) {
+                      currentBuzzObject.play();
+                  }
+              }
+          };
+
+         return SongPlayer;
     }
 
     angular
