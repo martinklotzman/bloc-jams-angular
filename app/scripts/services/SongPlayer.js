@@ -25,7 +25,7 @@
                     currentBuzzObject.play();
                     song.playing = true;
                 }
-          }
+            }
         };
 
         return SongPlayer;
