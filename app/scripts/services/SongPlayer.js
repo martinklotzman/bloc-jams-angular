@@ -5,13 +5,6 @@
          var SongPlayer = {};
 
          /**
-         * @desc Song object from list of songs
-         * @type {Object}
-         */
-
-         var currentSong = null;
-
-         /**
          * @desc Buzz object audio file
          * @type {Object}
          */
@@ -27,7 +20,7 @@
          var setSong = function(song) {
             if (currentBuzzObject) {
                 currentBuzzObject.stop();
-                currentSong.playing = null;
+                SongPlayer.currentSong.playing = null;
             }
 
             currentBuzzObject = new buzz.sound(song.audioUrl, {
@@ -35,7 +28,7 @@
                 preload: true
             });
 
-            currentSong = song;
+            SongPlayer.currentSong = song;
          };
 
          /**
@@ -50,17 +43,24 @@
          };
 
          /**
+         * @desc Song object from list of songs
+         * @type {Object}
+         */
+
+         SongPlayer.currentSong = null;
+
+         /**
          * @function SongPlayer.play
          * @desc if currently playing song is not song clicked it will pause that song and play clicked song and if the currently playing song is paused it will play it again
          * @param {Object} song
          */
 
          SongPlayer.play = function(song) {
-            if (currentSong !== song) {
+            if (SongPlayer.currentSong !== song) {
                 setSong(song);
                 playSong(song);
 
-              } else if (currentSong === song) {
+              } else if (SongPlayer.currentSong === song) {
                   if (currentBuzzObject.isPaused()) {
                       currentBuzzObject.play();
                   }
