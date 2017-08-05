@@ -15,6 +15,8 @@
                 formats: ['mp3'],
                 preload: true
             });
+
+            currentSong = song;
          };
 
          SongPlayer.play = function(song) {
