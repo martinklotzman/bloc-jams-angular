@@ -1,8 +1,8 @@
 (function() {
-    function SongPlayer() {
-
-
+    function SongPlayer(Fixtures) {
          var SongPlayer = {};
+
+         var currentAlbum = Fixtures.getAlbum();
 
          /**
          * @desc Buzz object audio file
@@ -56,6 +56,7 @@
          */
 
          SongPlayer.play = function(song) {
+            song = song || SongPlayer.currentSong;
             if (SongPlayer.currentSong !== song) {
                 setSong(song);
                 playSong(song);
@@ -73,6 +74,7 @@
           * @param {Object} song
           */
           SongPlayer.pause = function(song) {
+              song = song || SongPlayer.currentSong;
               currentBuzzObject.pause();
               song.playing = false;
           };
