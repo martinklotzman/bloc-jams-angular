@@ -2,6 +2,10 @@
     function SongPlayer(Fixtures) {
          var SongPlayer = {};
 
+         /**
+         * @desc returns album Object from Fixtures
+         * @type {Object}
+         */
          var currentAlbum = Fixtures.getAlbum();
 
          /**
@@ -43,10 +47,18 @@
          };
 
          /**
-         * @desc Song object from list of songs
+         * @function getSongIndex
+         * @desc Return index of the active song
+         * @param {Object} song
+         */
+         var getSongIndex = function(song) {
+            return currentAlbum.songs.indexOf(song);
+         }
+
+         /**
+         * @desc Active object from list of songs
          * @type {Object}
          */
-
          SongPlayer.currentSong = null;
 
          /**
@@ -84,5 +96,5 @@
 
     angular
         .module('blocJams')
-        .factory('SongPlayer', SongPlayer);
+        .factory('SongPlayer', ['Fixtures', SongPlayer]);
 })();
