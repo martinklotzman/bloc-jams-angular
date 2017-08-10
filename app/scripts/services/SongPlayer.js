@@ -71,6 +71,12 @@
          SongPlayer.currentSong = null;
 
          /**
+         * @desc Current playback time (in seconds) of currently playing song
+         * @type {number}
+         */
+         SongPlayer.currentTime = null;
+
+         /**
          * @function SongPlayer.play
          * @desc if currently playing song is not song clicked it will pause that song and play clicked song and if the currently playing song is paused it will play it again
          * @param {Object} song
