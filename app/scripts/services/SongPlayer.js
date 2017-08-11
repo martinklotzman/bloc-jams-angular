@@ -31,20 +31,14 @@
                 preload: true
             });
 
+            currentBuzzObject.bind('timeupdate', function() {
+               $rootScope.$apply(function() {
+                   SongPlayer.currentTime = currentBuzzObject.getTime();
+               });
+            });
+
             SongPlayer.currentSong = song;
          };
-
-
-         /**
-         * @desc Custom event that updates the song's playback progress
-         * @param {Object} currentBuzzObject
-         */
-         currentBuzzObject.bind('timeupdate', function() {
-            $rootScope.$apply(function() {
-                SongPlayer.currentTime = currentBuzzObject.getTime();
-            });
-         });
-
 
          /**
          * @function playSong
